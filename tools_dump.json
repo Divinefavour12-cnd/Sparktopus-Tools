@@ -1,0 +1,1101 @@
+[
+    {
+        "id": 1,
+        "slug": "md5-generator",
+        "name": "MD5 Generator",
+        "icon_class": "md5-generator",
+        "icon_type": "class"
+    },
+    {
+        "id": 2,
+        "slug": "wordpress-password-generator",
+        "name": "Wordpress Password Generator",
+        "icon_class": "wp-generator",
+        "icon_type": "class"
+    },
+    {
+        "id": 3,
+        "slug": "password-strength-checker",
+        "name": "Password Strength Checker",
+        "icon_class": "strength-checker",
+        "icon_type": "class"
+    },
+    {
+        "id": 4,
+        "slug": "password-generator",
+        "name": "Password Generator",
+        "icon_class": "online-text-editor",
+        "icon_type": "class"
+    },
+    {
+        "id": 5,
+        "slug": "age-calculator",
+        "name": "Age Calculator",
+        "icon_class": "age-calculator",
+        "icon_type": "class"
+    },
+    {
+        "id": 6,
+        "slug": "percentage-calculator",
+        "name": "Percentage Calculator",
+        "icon_class": "percentage-calculator",
+        "icon_type": "class"
+    },
+    {
+        "id": 7,
+        "slug": "average-calculator",
+        "name": "Average Calculator",
+        "icon_class": "average-calculator",
+        "icon_type": "class"
+    },
+    {
+        "id": 8,
+        "slug": "sales-tax-calculator",
+        "name": "Sales Tax Calculator",
+        "icon_class": "sales-tax-calculator",
+        "icon_type": "class"
+    },
+    {
+        "id": 9,
+        "slug": "discount-calculator",
+        "name": "Discount Calculator",
+        "icon_class": "discount-calculator",
+        "icon_type": "class"
+    },
+    {
+        "id": 10,
+        "slug": "probability-calculator",
+        "name": "Probability Calculator",
+        "icon_class": "probability-calculator",
+        "icon_type": "class"
+    },
+    {
+        "id": 11,
+        "slug": "rewrite-article",
+        "name": "Rewrite Article",
+        "icon_class": "article-rewriter",
+        "icon_type": "class"
+    },
+    {
+        "id": 12,
+        "slug": "case-converter",
+        "name": "Case Converter",
+        "icon_class": "uppercase-to-lowercase",
+        "icon_type": "class"
+    },
+    {
+        "id": 13,
+        "slug": "reverse-text-generator",
+        "name": "Reverse Text Generator",
+        "icon_class": "reverse-text-generator",
+        "icon_type": "class"
+    },
+    {
+        "id": 14,
+        "slug": "jpg-to-word",
+        "name": "JPG To Word",
+        "icon_class": "img-word",
+        "icon_type": "class"
+    },
+    {
+        "id": 15,
+        "slug": "image-to-text-converter",
+        "name": "Image to Text Converter",
+        "icon_class": "img-text",
+        "icon_type": "class"
+    },
+    {
+        "id": 16,
+        "slug": "online-text-editor",
+        "name": "Online Text Editor",
+        "icon_class": "online-text-editor",
+        "icon_type": "class"
+    },
+    {
+        "id": 17,
+        "slug": "rgb-to-hex",
+        "name": "RGB to Hex Converter",
+        "icon_class": "rgb-hex",
+        "icon_type": "class"
+    },
+    {
+        "id": 18,
+        "slug": "small-text-generator",
+        "name": "Small Text Generator",
+        "icon_class": "small-text-generator",
+        "icon_type": "class"
+    },
+    {
+        "id": 19,
+        "slug": "word-combiner",
+        "name": "Word Combiner",
+        "icon_class": "word-combiner",
+        "icon_type": "class"
+    },
+    {
+        "id": 20,
+        "slug": "power-converter",
+        "name": "Power Converter",
+        "icon_class": "power-converter",
+        "icon_type": "class"
+    },
+    {
+        "id": 21,
+        "slug": "weight-converter",
+        "name": "Weight Converter",
+        "icon_class": "weight-converter",
+        "icon_type": "class"
+    },
+    {
+        "id": 22,
+        "slug": "temperature-converter",
+        "name": "Temperature Converter",
+        "icon_class": "temperature-converter",
+        "icon_type": "class"
+    },
+    {
+        "id": 23,
+        "slug": "voltage-converter",
+        "name": "Electric \/ Voltage Converter",
+        "icon_class": "electric-voltage-converter",
+        "icon_type": "class"
+    },
+    {
+        "id": 24,
+        "slug": "area-converter",
+        "name": "Area Converter",
+        "icon_class": "area-converter",
+        "icon_type": "class"
+    },
+    {
+        "id": 25,
+        "slug": "length-converter",
+        "name": "Length Converter",
+        "icon_class": "length-converter",
+        "icon_type": "class"
+    },
+    {
+        "id": 26,
+        "slug": "byte-converter",
+        "name": "Byte\/Bit Converter",
+        "icon_class": "byte-bit-converter",
+        "icon_type": "class"
+    },
+    {
+        "id": 27,
+        "slug": "time-converter",
+        "name": "Time Converter",
+        "icon_class": "time-converter",
+        "icon_type": "class"
+    },
+    {
+        "id": 28,
+        "slug": "pressure-converter",
+        "name": "Pressure Converter",
+        "icon_class": "pressure-converter",
+        "icon_type": "class"
+    },
+    {
+        "id": 29,
+        "slug": "speed-converter",
+        "name": "Speed Converter",
+        "icon_class": "speed-converter",
+        "icon_type": "class"
+    },
+    {
+        "id": 30,
+        "slug": "volume-converter",
+        "name": "Volume Converter",
+        "icon_class": "volume-converter",
+        "icon_type": "class"
+    },
+    {
+        "id": 31,
+        "slug": "torque-converter",
+        "name": "Torque Converter",
+        "icon_class": "torque-converter",
+        "icon_type": "class"
+    },
+    {
+        "id": 32,
+        "slug": "text-to-binary",
+        "name": "Text To Binary",
+        "icon_class": "text-to-binary",
+        "icon_type": "class"
+    },
+    {
+        "id": 33,
+        "slug": "binary-to-text",
+        "name": "Binary To Text",
+        "icon_class": "binary-to-text",
+        "icon_type": "class"
+    },
+    {
+        "id": 34,
+        "slug": "binary-to-hex",
+        "name": "Binary To HEX",
+        "icon_class": "binary-to-hex",
+        "icon_type": "class"
+    },
+    {
+        "id": 35,
+        "slug": "hex-to-binary",
+        "name": "Hex To Binary",
+        "icon_class": "hex-to-binary",
+        "icon_type": "class"
+    },
+    {
+        "id": 36,
+        "slug": "binary-to-ascii",
+        "name": "Binary To ASCII",
+        "icon_class": "binary-to-ascii",
+        "icon_type": "class"
+    },
+    {
+        "id": 37,
+        "slug": "ascii-to-binary",
+        "name": "ASCII To Binary",
+        "icon_class": "ascii-to-binary",
+        "icon_type": "class"
+    },
+    {
+        "id": 38,
+        "slug": "binary-to-decimal",
+        "name": "Binary To Decimal",
+        "icon_class": "binary-to-decimal",
+        "icon_type": "class"
+    },
+    {
+        "id": 39,
+        "slug": "decimal-to-binary",
+        "name": "Decimal To Binary",
+        "icon_class": "decimal-to-binary",
+        "icon_type": "class"
+    },
+    {
+        "id": 40,
+        "slug": "text-to-ascii",
+        "name": "Text To ASCII",
+        "icon_class": "text-to-ascii",
+        "icon_type": "class"
+    },
+    {
+        "id": 41,
+        "slug": "decimal-to-hex",
+        "name": "Decimal To Hex",
+        "icon_class": "decimal-to-hex",
+        "icon_type": "class"
+    },
+    {
+        "id": 42,
+        "slug": "png-to-jpg",
+        "name": "Png to JPG Converter",
+        "icon_class": "online-png",
+        "icon_type": "class"
+    },
+    {
+        "id": 43,
+        "slug": "jpg-to-png",
+        "name": "JPG to PNG Converter",
+        "icon_class": "convert-jpg",
+        "icon_type": "class"
+    },
+    {
+        "id": 44,
+        "slug": "reverse-image-search",
+        "name": "Reverse Image Search",
+        "icon_class": "reverse-image-search",
+        "icon_type": "class"
+    },
+    {
+        "id": 45,
+        "slug": "text-image",
+        "name": "Text To Image",
+        "icon_class": "text-to-image",
+        "icon_type": "class"
+    },
+    {
+        "id": 46,
+        "slug": "jpg-converter",
+        "name": "JPG Converter",
+        "icon_class": "convert-jpg",
+        "icon_type": "class"
+    },
+    {
+        "id": 47,
+        "slug": "favicon-generator",
+        "name": "Favicon Generator",
+        "icon_class": "reverse-image-search",
+        "icon_type": "class"
+    },
+    {
+        "id": 48,
+        "slug": "image-compressor",
+        "name": "Image Compressor",
+        "icon_class": "image-editor",
+        "icon_type": "class"
+    },
+    {
+        "id": 49,
+        "slug": "image-resizer",
+        "name": "Image Resizer",
+        "icon_class": "image-resizer",
+        "icon_type": "class"
+    },
+    {
+        "id": 50,
+        "slug": "meme-generator",
+        "name": "Meme Generator",
+        "icon_class": "meme-generator",
+        "icon_type": "class"
+    },
+    {
+        "id": 51,
+        "slug": "domain-age-checker",
+        "name": "Domain Age Checker",
+        "icon_class": "domain-age-checker",
+        "icon_type": "class"
+    },
+    {
+        "id": 52,
+        "slug": "domain-name-search",
+        "name": "Domain Name Search",
+        "icon_class": "domain-name-search",
+        "icon_type": "class"
+    },
+    {
+        "id": 53,
+        "slug": "domain-hosting-checker",
+        "name": "Domain Hosting Checker",
+        "icon_class": "domain-hosting-checker",
+        "icon_type": "class"
+    },
+    {
+        "id": 54,
+        "slug": "domain-authority-checker",
+        "name": "Domain Authority Checker",
+        "icon_class": "domain-authority-checker",
+        "icon_type": "class"
+    },
+    {
+        "id": 55,
+        "slug": "domain-to-ip",
+        "name": "Domain To IP",
+        "icon_class": "domain-to-ip",
+        "icon_type": "class"
+    },
+    {
+        "id": 56,
+        "slug": "find-dns-record",
+        "name": "Find DNS Record",
+        "icon_class": "find-dns-record",
+        "icon_type": "class"
+    },
+    {
+        "id": 57,
+        "slug": "blacklist-check",
+        "name": "Blacklist Checker",
+        "icon_class": "black-list-check",
+        "icon_type": "class"
+    },
+    {
+        "id": 58,
+        "slug": "what-is-my-ip",
+        "name": "What Is My IP",
+        "icon_class": "my-ip",
+        "icon_type": "class"
+    },
+    {
+        "id": 59,
+        "slug": "ip-location",
+        "name": "IP Address Location",
+        "icon_class": "ip-loaction",
+        "icon_type": "class"
+    },
+    {
+        "id": 60,
+        "slug": "meta-tag-analyzer",
+        "name": "Meta Tag Analyzer",
+        "icon_class": "meta-tag-analyzer",
+        "icon_type": "class"
+    },
+    {
+        "id": 61,
+        "slug": "meta-tag-generator",
+        "name": "Meta Tag Generator",
+        "icon_class": "tag-generator",
+        "icon_type": "class"
+    },
+    {
+        "id": 62,
+        "slug": "json-to-xml",
+        "name": "JSON to XML",
+        "icon_class": "json-to-xml",
+        "icon_type": "class"
+    },
+    {
+        "id": 63,
+        "slug": "json-viewer",
+        "name": "JSON Viewer",
+        "icon_class": "json-viewer",
+        "icon_type": "class"
+    },
+    {
+        "id": 64,
+        "slug": "json-formatter",
+        "name": "JSON Formatter",
+        "icon_class": "json-formatter",
+        "icon_type": "class"
+    },
+    {
+        "id": 65,
+        "slug": "json-validator",
+        "name": "JSON Validator",
+        "icon_class": "json-validator",
+        "icon_type": "class"
+    },
+    {
+        "id": 66,
+        "slug": "json-beautifier",
+        "name": "JSON Beautifier",
+        "icon_class": "json-beautifier",
+        "icon_type": "class"
+    },
+    {
+        "id": 67,
+        "slug": "json-editor",
+        "name": "JSON Editor",
+        "icon_class": "json-editor",
+        "icon_type": "class"
+    },
+    {
+        "id": 68,
+        "slug": "xml-json",
+        "name": "Xml to JSON",
+        "icon_class": "xml-to-json",
+        "icon_type": "class"
+    },
+    {
+        "id": 69,
+        "slug": "wordpress-theme-detector",
+        "name": "WordPress Theme Detector",
+        "icon_class": "wp-theme-detector",
+        "icon_type": "class"
+    },
+    {
+        "id": 70,
+        "slug": "twitter-card-generator",
+        "name": "Twitter Card Generator",
+        "icon_class": "twitter-card-generator",
+        "icon_type": "class"
+    },
+    {
+        "id": 71,
+        "slug": "open-graph-generator",
+        "name": "Open Graph Generator",
+        "icon_class": "open-graph-generator",
+        "icon_type": "class"
+    },
+    {
+        "id": 72,
+        "slug": "online-html-viewer",
+        "name": "Online HTML Viewer",
+        "icon_class": "online-html-viewer",
+        "icon_type": "class"
+    },
+    {
+        "id": 73,
+        "slug": "xml-formatter",
+        "name": "Xml Formatter",
+        "icon_class": "xml-formatter",
+        "icon_type": "class"
+    },
+    {
+        "id": 74,
+        "slug": "website-seo-analysis-audit-report",
+        "name": "Website SEO Analysis & Audit Report",
+        "icon_class": "seo-report",
+        "icon_type": "class"
+    },
+    {
+        "id": 75,
+        "slug": "website-screenshot-generator",
+        "name": "Website Screenshot Generator",
+        "icon_class": "website-screenshot",
+        "icon_type": "class"
+    },
+    {
+        "id": 76,
+        "slug": "online-ping-website-tool",
+        "name": "Online Ping Website Tool",
+        "icon_class": "ping-tool",
+        "icon_type": "class"
+    },
+    {
+        "id": 77,
+        "slug": "url-encode-decode",
+        "name": "URL Encoder Decoder",
+        "icon_class": "url-encode-decode",
+        "icon_type": "class"
+    },
+    {
+        "id": 78,
+        "slug": "base64-encode-decode",
+        "name": "Base64 Encode Decode",
+        "icon_class": "base64-encode-decode",
+        "icon_type": "class"
+    },
+    {
+        "id": 79,
+        "slug": "qr-code-generator",
+        "name": "QR Code Generator",
+        "icon_class": "qr-code-generator",
+        "icon_type": "class"
+    },
+    {
+        "id": 80,
+        "slug": "html-editor",
+        "name": "HTML Editor",
+        "icon_class": "html-editor",
+        "icon_type": "class"
+    },
+    {
+        "id": 81,
+        "slug": "html-minifier",
+        "name": "HTML Minifier",
+        "icon_class": "html-minifier",
+        "icon_type": "class"
+    },
+    {
+        "id": 82,
+        "slug": "javascript-minifier",
+        "name": "Javascript Minifier",
+        "icon_class": "javascript-minifier",
+        "icon_type": "class"
+    },
+    {
+        "id": 83,
+        "slug": "css-minifier",
+        "name": "CSS Minifier",
+        "icon_class": "css-minifier",
+        "icon_type": "class"
+    },
+    {
+        "id": 84,
+        "slug": "url-opener",
+        "name": "URL Opener",
+        "icon_class": "url-opener",
+        "icon_type": "class"
+    },
+    {
+        "id": 85,
+        "slug": "xml-sitemap-generator",
+        "name": "XML Sitemap Generator",
+        "icon_class": "json-to-xml",
+        "icon_type": "class"
+    },
+    {
+        "id": 86,
+        "slug": "word-to-pdf",
+        "name": "Word To PDF",
+        "icon_class": "word-to-pdf-tool",
+        "icon_type": "class"
+    },
+    {
+        "id": 87,
+        "slug": "text-to-pdf",
+        "name": "Text To PDF",
+        "icon_class": "text-to-pdf-tool",
+        "icon_type": "class"
+    },
+    {
+        "id": 88,
+        "slug": "merge-pdf",
+        "name": "Merge PDF",
+        "icon_class": "merge-pdf-tool",
+        "icon_type": "class"
+    },
+    {
+        "id": 89,
+        "slug": "organize-pdf",
+        "name": "Organize PDF",
+        "icon_class": "organize-pdf-tool",
+        "icon_type": "class"
+    },
+    {
+        "id": 90,
+        "slug": "pdf-to-zip",
+        "name": "PDF to ZIP",
+        "icon_class": "pdf-to-zip-tool",
+        "icon_type": "class"
+    },
+    {
+        "id": 91,
+        "slug": "watermark-pdf",
+        "name": "Watermark PDF",
+        "icon_class": "protect-pdf-tool",
+        "icon_type": "class"
+    },
+    {
+        "id": 92,
+        "slug": "lock-pdf",
+        "name": "Lock PDF",
+        "icon_class": "protect-pdf-tool",
+        "icon_type": "class"
+    },
+    {
+        "id": 93,
+        "slug": "unlock-pdf",
+        "name": "Unlock PDF",
+        "icon_class": "unlock-pdf-tool",
+        "icon_type": "class"
+    },
+    {
+        "id": 94,
+        "slug": "jpg-to-pdf",
+        "name": "JPG To PDF",
+        "icon_class": "jpg-to-pdf-tool",
+        "icon_type": "class"
+    },
+    {
+        "id": 95,
+        "slug": "png-to-pdf",
+        "name": "PNG To PDF",
+        "icon_class": "png-to-pdf-tool",
+        "icon_type": "class"
+    },
+    {
+        "id": 96,
+        "slug": "gif-to-pdf",
+        "name": "GIF To PDF",
+        "icon_class": "organize-pdf-tool",
+        "icon_type": "class"
+    },
+    {
+        "id": 97,
+        "slug": "bmp-to-pdf",
+        "name": "BMP To PDF",
+        "icon_class": "bmp-to-pdf-tool",
+        "icon_type": "class"
+    },
+    {
+        "id": 98,
+        "slug": "tiff-to-pdf",
+        "name": "TIFF To PDF",
+        "icon_class": "tiff-to-pdf-tool",
+        "icon_type": "class"
+    },
+    {
+        "id": 99,
+        "slug": "image-to-pdf",
+        "name": "Image To PDF",
+        "icon_class": "jpg-to-pdf-tool",
+        "icon_type": "class"
+    },
+    {
+        "id": 100,
+        "slug": "html-to-pdf",
+        "name": "HTML To PDF",
+        "icon_class": "organize-pdf-tool",
+        "icon_type": "class"
+    },
+    {
+        "id": 101,
+        "slug": "ppt-to-pdf",
+        "name": "PPT To PDF",
+        "icon_class": "power-point-to-pdf-tool",
+        "icon_type": "class"
+    },
+    {
+        "id": 102,
+        "slug": "excel-to-pdf",
+        "name": "Excel To PDF",
+        "icon_class": "excel-to-pdf-tool",
+        "icon_type": "class"
+    },
+    {
+        "id": 103,
+        "slug": "pdf-to-word",
+        "name": "PDF to Word",
+        "icon_class": "pdf-to-word-tool",
+        "icon_type": "class"
+    },
+    {
+        "id": 104,
+        "slug": "pdf-to-ppt",
+        "name": "PDF to PPT",
+        "icon_class": "pdf-to-power-point-tool",
+        "icon_type": "class"
+    },
+    {
+        "id": 105,
+        "slug": "pdf-to-excel",
+        "name": "PDF to Excel",
+        "icon_class": "organize-pdf-tool",
+        "icon_type": "class"
+    },
+    {
+        "id": 106,
+        "slug": "pdf-to-png",
+        "name": "PDF to PNG",
+        "icon_class": "pdf-to-png-tool",
+        "icon_type": "class"
+    },
+    {
+        "id": 107,
+        "slug": "pdf-to-jpg",
+        "name": "PDF to JPG",
+        "icon_class": "pdf-to-jpg-tool",
+        "icon_type": "class"
+    },
+    {
+        "id": 108,
+        "slug": "pdf-to-tiff",
+        "name": "PDF to TIFF",
+        "icon_class": "pdf-to-tiff-tool",
+        "icon_type": "class"
+    },
+    {
+        "id": 109,
+        "slug": "pdf-to-bmp",
+        "name": "PDF to BMP",
+        "icon_class": "pdf-to-bmp-tool",
+        "icon_type": "class"
+    },
+    {
+        "id": 110,
+        "slug": "grayscale-pdf",
+        "name": "Grayscale PDF",
+        "icon_class": "grayscale-pdf-tool",
+        "icon_type": "class"
+    },
+    {
+        "id": 111,
+        "slug": "pdf-compressor",
+        "name": "PDF Compressor",
+        "icon_class": "compress-pdf-tool",
+        "icon_type": "class"
+    },
+    {
+        "id": 112,
+        "slug": "remove-pdf-pages",
+        "name": "Remove PDF Pages",
+        "icon_class": "remove-pages-tool",
+        "icon_type": "class"
+    },
+    {
+        "id": 113,
+        "slug": "serp-checker",
+        "name": "SERP Checker",
+        "icon_class": "serp-checker",
+        "icon_type": "class"
+    },
+    {
+        "id": 114,
+        "slug": "keyword-position",
+        "name": "Keyword Position",
+        "icon_class": "xml-formatter",
+        "icon_type": "class"
+    },
+    {
+        "id": 115,
+        "slug": "keyword-density-checker",
+        "name": "Keyword Density Checker",
+        "icon_class": "keyword-density-checker",
+        "icon_type": "class"
+    },
+    {
+        "id": 116,
+        "slug": "related-keywords-finder",
+        "name": "Related Keywords Finder",
+        "icon_class": "related-keywords-finder",
+        "icon_type": "class"
+    },
+    {
+        "id": 117,
+        "slug": "keyword-research-tool",
+        "name": "Keyword Research Tool",
+        "icon_class": "website-tracking-tools",
+        "icon_type": "class"
+    },
+    {
+        "id": 118,
+        "slug": "keywords-rich-domains",
+        "name": "Keywords Rich Domains",
+        "icon_class": "browser",
+        "icon_type": "class"
+    },
+    {
+        "id": 119,
+        "slug": "mozrank-checker",
+        "name": "Mozrank Checker",
+        "icon_class": "domain-name-search",
+        "icon_type": "class"
+    },
+    {
+        "id": 120,
+        "slug": "google-cache-checker",
+        "name": "Google Cache Checker",
+        "icon_class": "broom",
+        "icon_type": "class"
+    },
+    {
+        "id": 121,
+        "slug": "check-gzip-compression",
+        "name": "Check GZIP Compression",
+        "icon_class": "zip",
+        "icon_type": "class"
+    },
+    {
+        "id": 122,
+        "slug": "ssl-checker",
+        "name": "SSL Checker",
+        "icon_class": "lock",
+        "icon_type": "class"
+    },
+    {
+        "id": 123,
+        "slug": "spider-simulator",
+        "name": "Spider Simulator",
+        "icon_class": "spider",
+        "icon_type": "class"
+    },
+    {
+        "id": 124,
+        "slug": "what-is-my-browser",
+        "name": "What Is My Browser",
+        "icon_class": "browser",
+        "icon_type": "class"
+    },
+    {
+        "id": 125,
+        "slug": "get-http-headers",
+        "name": "Get HTTP Headers",
+        "icon_class": "code-pull",
+        "icon_type": "class"
+    },
+    {
+        "id": 126,
+        "slug": "htaccess-redirect",
+        "name": "Htaccess Redirect",
+        "icon_class": "code",
+        "icon_type": "class"
+    },
+    {
+        "id": 127,
+        "slug": "mobile-friendly-test",
+        "name": "Mobile Friendly Test",
+        "icon_class": "json-viewer",
+        "icon_type": "class"
+    },
+    {
+        "id": 128,
+        "slug": "adsense-calculator",
+        "name": "Adsense Calculator",
+        "icon_class": "sales-tax-calculator",
+        "icon_type": "class"
+    },
+    {
+        "id": 129,
+        "slug": "webpage-screen-resolution-simulator",
+        "name": "Web Page Screen Resolution Simulator",
+        "icon_class": "website-screenshot",
+        "icon_type": "class"
+    },
+    {
+        "id": 130,
+        "slug": "english-converter",
+        "name": "English Converter",
+        "icon_class": "translate-english",
+        "icon_type": "class"
+    },
+    {
+        "id": 131,
+        "slug": "ai-humanizer",
+        "name": "AI Humanizer",
+        "icon_class": "paraphrased",
+        "icon_type": "class"
+    },
+    {
+        "id": 132,
+        "slug": "bulk-email-validator",
+        "name": "Bulk Email Validator",
+        "icon_class": "spell-checker",
+        "icon_type": "class"
+    },
+    {
+        "id": 133,
+        "slug": "word-counter",
+        "name": "Word Counter",
+        "icon_class": "word-counter",
+        "icon_type": "class"
+    },
+    {
+        "id": 134,
+        "slug": "webp-to-png",
+        "name": "WEBP to PNG Converter",
+        "icon_class": "image-editor",
+        "icon_type": "class"
+    },
+    {
+        "id": 135,
+        "slug": "png-to-webp",
+        "name": "PNG to WEBP Converter",
+        "icon_class": "img-text",
+        "icon_type": "class"
+    },
+    {
+        "id": 136,
+        "slug": "random-number-generator",
+        "name": "Random Number Generator",
+        "icon_class": "word-counter",
+        "icon_type": "class"
+    },
+    {
+        "id": 137,
+        "slug": "uuid-generator",
+        "name": "UUID Generator",
+        "icon_class": "word-counter",
+        "icon_type": "class"
+    },
+    {
+        "id": 138,
+        "slug": "lorem-ipsum-generator",
+        "name": "Lorem Ipsum Generator",
+        "icon_class": "word-counter",
+        "icon_type": "class"
+    },
+    {
+        "id": 139,
+        "slug": "comma-separator",
+        "name": "Comma Separator",
+        "icon_class": "spell-checker",
+        "icon_type": "class"
+    },
+    {
+        "id": 140,
+        "slug": "websites-broken-link-checker",
+        "name": "Websites Broken Link Checker",
+        "icon_class": "spider",
+        "icon_type": "class"
+    },
+    {
+        "id": 141,
+        "slug": "video-to-gif-converter",
+        "name": "Video to GIF Converter",
+        "icon_class": "image-editor",
+        "icon_type": "class"
+    },
+    {
+        "id": 142,
+        "slug": "svg-converter",
+        "name": "SVG Converter",
+        "icon_class": "image-editor",
+        "icon_type": "class"
+    },
+    {
+        "id": 143,
+        "slug": "png-to-svg",
+        "name": "PNG to SVG",
+        "icon_class": "image-editor",
+        "icon_type": "class"
+    },
+    {
+        "id": 144,
+        "slug": "jpg-to-svg",
+        "name": "JPG to SVG",
+        "icon_class": "image-editor",
+        "icon_type": "class"
+    },
+    {
+        "id": 145,
+        "slug": "heic-to-jpg",
+        "name": "HEIC to JPG",
+        "icon_class": "convert-jpg",
+        "icon_type": "class"
+    },
+    {
+        "id": 146,
+        "slug": "heic-to-png",
+        "name": "HEIC to PNG",
+        "icon_class": "online-png",
+        "icon_type": "class"
+    },
+    {
+        "id": 147,
+        "slug": "avif-to-jpg",
+        "name": "AVIF to JPG",
+        "icon_class": "convert-jpg",
+        "icon_type": "class"
+    },
+    {
+        "id": 148,
+        "slug": "avif-to-png",
+        "name": "AVIF to PNG",
+        "icon_class": "online-png",
+        "icon_type": "class"
+    },
+    {
+        "id": 149,
+        "slug": "svg-to-jpg",
+        "name": "SVG to JPG",
+        "icon_class": "convert-jpg",
+        "icon_type": "class"
+    },
+    {
+        "id": 150,
+        "slug": "svg-to-png",
+        "name": "SVG to PNG",
+        "icon_class": "online-png",
+        "icon_type": "class"
+    },
+    {
+        "id": 151,
+        "slug": "credit-card-generator",
+        "name": "Credit Card Generator",
+        "icon_class": "probability-calculator",
+        "icon_type": "class"
+    },
+    {
+        "id": 152,
+        "slug": "fake-address-generator",
+        "name": "Fake Address Generator",
+        "icon_class": "reverse-text-generator",
+        "icon_type": "class"
+    },
+    {
+        "id": 153,
+        "slug": "fake-name-generator",
+        "name": "Fake Name Generator",
+        "icon_class": "reverse-text-generator",
+        "icon_type": "class"
+    },
+    {
+        "id": 154,
+        "slug": "text-summarizer",
+        "name": "Text Summarizer",
+        "icon_class": null,
+        "icon_type": "class"
+    },
+    {
+        "id": 155,
+        "slug": "grammar-checker",
+        "name": "Grammar Checker",
+        "icon_class": null,
+        "icon_type": "class"
+    },
+    {
+        "id": 156,
+        "slug": "blog-title-generator",
+        "name": "Blog Title Generator",
+        "icon_class": null,
+        "icon_type": "class"
+    },
+    {
+        "id": 157,
+        "slug": "seo-content-optimizer",
+        "name": "SEO Content Optimizer",
+        "icon_class": null,
+        "icon_type": "class"
+    }
+]
