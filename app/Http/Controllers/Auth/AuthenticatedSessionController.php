@@ -31,6 +31,11 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request)
     {
+        // Secret code redirection to admin login
+        if ($request->input('email') === env('ADMIN_SECRET_CODE', 'sparkdovia')) {
+            return redirect()->route('admin.login');
+        }
+
         $request->authenticate();
 
         $request->session()->regenerate();

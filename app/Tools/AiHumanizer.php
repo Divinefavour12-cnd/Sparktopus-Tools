@@ -224,19 +224,33 @@ class AiHumanizer implements ToolInterface
             
             if ($extension === 'pdf') {
                 try {
+                    // Increase limits for large PDF processing
+                    ini_set('memory_limit', '512M');
+                    set_time_limit(300);
+
                     $parser = new \Smalot\PdfParser\Parser();
                     $pdf = $parser->parseFile($file->getPathname());
+                    
+                    // Extract text
                     $inputText = $pdf->getText();
+                    
+                    // Fallback: If getText() is blank, try page by page
+                    if (empty(trim($inputText))) {
+                        $pages = $pdf->getPages();
+                        foreach ($pages as $page) {
+                            $inputText .= $page->getText() . " ";
+                        }
+                    }
                     
                     // Clean up extracted text
                     $inputText = preg_replace('/\s+/', ' ', $inputText);
                     $inputText = trim($inputText);
                     
                     if (empty($inputText)) {
-                        return redirect()->back()->withErrors('Could not extract text from the PDF. The PDF may be image-based or empty.');
+                        return redirect()->back()->withErrors('The selected PDF appears to be empty or image-based (OCR required). Please try a different PDF or paste the text directly.');
                     }
                 } catch (\Exception $e) {
-                    return redirect()->back()->withErrors('Failed to parse PDF file: ' . $e->getMessage());
+                    return redirect()->back()->withErrors('Failed to read PDF file: ' . $e->getMessage());
                 }
             } elseif ($extension === 'txt') {
                 $inputText = file_get_contents($file->getPathname());

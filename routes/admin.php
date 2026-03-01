@@ -22,20 +22,90 @@ use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PermissionsController;
 use App\Http\Controllers\Admin\AdvertisementsController;
+use App\Http\Controllers\Admin\FeedbackController as AdminFeedbackController;
 
 require __DIR__ . '/admin_auth.php';
 Route::group(
-    ['middleware' => ['AdminTheme', 'auth']],
+    ['middleware' => ['AdminTheme', 'auth:admin']],
     function () {
         Route::post('admin/register-item', [ArtisanApi::class, 'register'])->name('system.register-item')->can('application operations');
     }
 );
 
 Route::group(
-    ['prefix' => env('APP_ADMIN_PREFIX', 'admin'),  'middleware' => ['AdminTheme', 'auth', '2fa']],
+    ['prefix' => env('APP_ADMIN_PREFIX', 'admin'),  'middleware' => ['auth:admin']],
     function () {
-        Route::get('/', [DashboardController::class, 'index'])->name('admin.home');
-        Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+        Route::get('/', [\App\Http\Controllers\SparkAdmin\DashboardController::class, 'index'])->name('admin.home');
+        Route::get('/dashboard', [\App\Http\Controllers\SparkAdmin\DashboardController::class, 'index'])->name('admin.dashboard');
+        Route::get('/spark-dashboard', [\App\Http\Controllers\SparkAdmin\DashboardController::class, 'index'])->name('spark-admin.dashboard');
+
+        // Custom SparkAdmin Feedback Routes
+        Route::get('/feedback', [\App\Http\Controllers\SparkAdmin\FeedbackController::class, 'index'])->name('spark-admin.feedback.index');
+        Route::get('/feedback/{feedback}', [\App\Http\Controllers\SparkAdmin\FeedbackController::class, 'show'])->name('spark-admin.feedback.show');
+        Route::post('/feedback/{feedback}/status', [\App\Http\Controllers\SparkAdmin\FeedbackController::class, 'updateStatus'])->name('spark-admin.feedback.status');
+        Route::delete('/feedback/{feedback}', [\App\Http\Controllers\SparkAdmin\FeedbackController::class, 'destroy'])->name('spark-admin.feedback.destroy');
+
+        // Custom SparkAdmin Subscription Routes
+        Route::get('/subscriptions', [\App\Http\Controllers\SparkAdmin\SubscriptionController::class, 'index'])->name('spark-admin.subscriptions.index');
+        Route::post('/subscriptions/{transaction}/status', [\App\Http\Controllers\SparkAdmin\SubscriptionController::class, 'updateStatus'])->name('spark-admin.subscriptions.status');
+
+        // Custom SparkAdmin Update Routes (Rebranding Blog)
+        Route::get('/updates', [\App\Http\Controllers\SparkAdmin\UpdateController::class, 'index'])->name('spark-admin.updates.index');
+        Route::get('/updates/create', [\App\Http\Controllers\SparkAdmin\UpdateController::class, 'create'])->name('spark-admin.updates.create');
+        Route::post('/updates', [\App\Http\Controllers\SparkAdmin\UpdateController::class, 'store'])->name('spark-admin.updates.store');
+        Route::get('/updates/{post}/edit', [\App\Http\Controllers\SparkAdmin\UpdateController::class, 'edit'])->name('spark-admin.updates.edit');
+        Route::post('/updates/{post}/update', [\App\Http\Controllers\SparkAdmin\UpdateController::class, 'update'])->name('spark-admin.updates.update');
+        Route::delete('/updates/{post}', [\App\Http\Controllers\SparkAdmin\UpdateController::class, 'destroy'])->name('spark-admin.updates.destroy');
+
+        // Custom SparkAdmin Profile Routes
+        Route::get('/profile', [\App\Http\Controllers\SparkAdmin\ProfileController::class, 'index'])->name('spark-admin.profile.index');
+        Route::post('/profile', [\App\Http\Controllers\SparkAdmin\ProfileController::class, 'update'])->name('spark-admin.profile.update');
+        Route::post('/profile/theme', [\App\Http\Controllers\SparkAdmin\ProfileController::class, 'updateTheme'])->name('spark-admin.profile.update-theme');
+
+        // Custom SparkAdmin User Routes
+        Route::get('/users', [\App\Http\Controllers\SparkAdmin\UserController::class, 'index'])->name('spark-admin.users.index');
+        Route::get('/users/{user}', [\App\Http\Controllers\SparkAdmin\UserController::class, 'show'])->name('spark-admin.users.show');
+        Route::post('/users/{user}/suspend', [\App\Http\Controllers\SparkAdmin\UserController::class, 'suspend'])->name('spark-admin.users.suspend');
+        Route::post('/users/{user}/unsuspend', [\App\Http\Controllers\SparkAdmin\UserController::class, 'unsuspend'])->name('spark-admin.users.unsuspend');
+        Route::post('/users/{user}/ban', [\App\Http\Controllers\SparkAdmin\UserController::class, 'ban'])->name('spark-admin.users.ban');
+        Route::post('/users/{user}/reset-usage', [\App\Http\Controllers\SparkAdmin\UserController::class, 'resetUsage'])->name('spark-admin.users.reset-usage');
+        Route::post('/users/{user}/upgrade/{plan}', [\App\Http\Controllers\SparkAdmin\UserController::class, 'upgrade'])->name('spark-admin.users.upgrade');
+        Route::delete('/users/{user}', [\App\Http\Controllers\SparkAdmin\UserController::class, 'destroy'])->name('spark-admin.users.destroy');
+
+        // Custom SparkAdmin Tools Routes
+        Route::get('/tools', [\App\Http\Controllers\SparkAdmin\ToolsController::class, 'index'])->name('spark-admin.tools.index');
+        Route::get('/tools/{tool}/edit', [\App\Http\Controllers\SparkAdmin\ToolsController::class, 'edit'])->name('spark-admin.tools.edit');
+        Route::post('/tools/{tool}/update', [\App\Http\Controllers\SparkAdmin\ToolsController::class, 'update'])->name('spark-admin.tools.update');
+        Route::get('/tools/status/{tool}', [\App\Http\Controllers\SparkAdmin\ToolsController::class, 'statusChange'])->name('spark-admin.tools.status');
+        Route::get('/tools/homepage-selector', [\App\Http\Controllers\SparkAdmin\ToolsController::class, 'homePage'])->name('spark-admin.tools.homepage');
+        Route::post('/tools/set-home/{tool}', [\App\Http\Controllers\SparkAdmin\ToolsController::class, 'setHome'])->name('spark-admin.tools.set-home');
+
+        // Custom SparkAdmin Advertisement Routes
+        Route::get('/ads', [\App\Http\Controllers\SparkAdmin\AdvertisementController::class, 'index'])->name('spark-admin.advertisement.index');
+        Route::get('/ads/create/{type}', [\App\Http\Controllers\SparkAdmin\AdvertisementController::class, 'create'])->name('spark-admin.advertisement.create');
+        Route::post('/ads', [\App\Http\Controllers\SparkAdmin\AdvertisementController::class, 'store'])->name('spark-admin.advertisement.store');
+        Route::get('/ads/{advertisement}/edit', [\App\Http\Controllers\SparkAdmin\AdvertisementController::class, 'edit'])->name('spark-admin.advertisement.edit');
+        Route::post('/ads/{advertisement}/update', [\App\Http\Controllers\SparkAdmin\AdvertisementController::class, 'update'])->name('spark-admin.advertisement.update');
+        Route::get('/ads/status/{advertisement}', [\App\Http\Controllers\SparkAdmin\AdvertisementController::class, 'statusChange'])->name('spark-admin.advertisement.status');
+        Route::delete('/ads/{advertisement}', [\App\Http\Controllers\SparkAdmin\AdvertisementController::class, 'destroy'])->name('spark-admin.advertisement.destroy');
+
+        // Custom SparkAdmin Setting Routes
+        Route::get('/settings', [\App\Http\Controllers\SparkAdmin\SettingController::class, 'index'])->name('spark-admin.settings.index');
+        Route::post('/settings', [\App\Http\Controllers\SparkAdmin\SettingController::class, 'update'])->name('spark-admin.settings.update');
+        // Custom SparkAdmin RBAC Routes
+        Route::get('/access-control/roles', [\App\Http\Controllers\SparkAdmin\RolesController::class, 'index'])->name('spark-admin.roles.index');
+        Route::post('/access-control/roles', [\App\Http\Controllers\SparkAdmin\RolesController::class, 'store'])->name('spark-admin.roles.store');
+        Route::post('/access-control/roles/{role}/update', [\App\Http\Controllers\SparkAdmin\RolesController::class, 'update'])->name('spark-admin.roles.update');
+        Route::delete('/access-control/roles/{role}', [\App\Http\Controllers\SparkAdmin\RolesController::class, 'destroy'])->name('spark-admin.roles.destroy');
+
+        Route::get('/access-control/permissions', [\App\Http\Controllers\SparkAdmin\PermissionsController::class, 'index'])->name('spark-admin.permissions.index');
+        Route::post('/access-control/permissions', [\App\Http\Controllers\SparkAdmin\PermissionsController::class, 'store'])->name('spark-admin.permissions.store');
+
+        Route::get('/access-control/admins', [\App\Http\Controllers\SparkAdmin\AdminUserController::class, 'index'])->name('spark-admin.admins.index');
+        Route::post('/access-control/admins', [\App\Http\Controllers\SparkAdmin\AdminUserController::class, 'store'])->name('spark-admin.admins.store');
+        Route::post('/access-control/admins/{admin}/update', [\App\Http\Controllers\SparkAdmin\AdminUserController::class, 'update'])->name('spark-admin.admins.update');
+        Route::delete('/access-control/admins/{admin}', [\App\Http\Controllers\SparkAdmin\AdminUserController::class, 'destroy'])->name('spark-admin.admins.destroy');
+
         Route::get('pages', [PageController::class, 'index'])->name('admin.pages')->can('manage page');
         Route::get('pages/create', [PageController::class, 'create'])->name('admin.pages.create')->can('create page');
         Route::post('pages/create', [PageController::class, 'store'])->name('admin.pages.store')->can('create page');
@@ -43,13 +113,15 @@ Route::group(
         Route::post('pages/{page}/edit', [PageController::class, 'update'])->name('admin.pages.update')->can('edit page');
         Route::delete('pages/{page}', [PageController::class, 'destroy'])->name('admin.pages.destroy')->can('delete page');
 
-        Route::get('posts', [PostsController::class, 'index'])->name('admin.posts')->can('manage post');
-        Route::get('posts/create', [PostsController::class, 'create'])->name('admin.posts.create')->can('create post');
-        Route::post('posts/create', [PostsController::class, 'store'])->name('admin.posts.store')->can('create post');
-        Route::get('posts/{post}/edit', [PostsController::class, 'edit'])->name('admin.posts.edit')->can('edit post');
-        Route::post('posts/{post}/edit', [PostsController::class, 'update'])->name('admin.posts.update')->can('edit post');
-        Route::delete('posts/{post}', [PostsController::class, 'destroy'])->name('admin.posts.destroy')->can('delete post');
-        Route::get('posts/{post}/{id}', [PostsController::class, 'featured'])->name('admin.posts.featured')->can('manage post');
+/*
+        Route::get('updates', [PostsController::class, 'index'])->name('admin.updates')->can('manage post');
+        Route::get('updates/create', [PostsController::class, 'create'])->name('admin.updates.create')->can('create post');
+        Route::post('updates/create', [PostsController::class, 'store'])->name('admin.updates.store')->can('create post');
+        Route::get('updates/{post}/edit', [PostsController::class, 'edit'])->name('admin.updates.edit')->can('edit post');
+        Route::post('updates/{post}/edit', [PostsController::class, 'update'])->name('admin.updates.update')->can('edit post');
+        Route::delete('updates/{post}', [PostsController::class, 'destroy'])->name('admin.updates.destroy')->can('delete post');
+        Route::get('updates/{post}/{id}', [PostsController::class, 'featured'])->name('admin.updates.featured')->can('manage post');
+*/
 
         Route::get('tags', [TagsController::class, 'index'])->name('admin.tags')->can('view tag');
         Route::post('tags/create', [TagsController::class, 'store'])->name('admin.tags.store')->can('create tag');
@@ -72,6 +144,7 @@ Route::group(
         Route::post('roles/unassign/action', [RolesController::class, 'roleAction'])->name('admin.role.action')->can('manage roles');
         Route::post('roles/users/get/{role}', [RolesController::class, 'getUsers'])->name('admin.role.getUsers')->can('manage roles');
 
+/*
         Route::get('users', [UserController::class, 'index'])->name('admin.users')->can('manage users');
         Route::get('users/trashed', [UserController::class, 'trashed'])->name('admin.users.trashed')->can('manage users');
         Route::post('users/create', [UserController::class, 'store'])->name('admin.users.store')->can('create users');
@@ -81,6 +154,7 @@ Route::group(
         Route::delete('users/{user}', [UserController::class, 'destroy'])->name('admin.users.destroy')->can('delete users');
         Route::put('users/{user}', [UserController::class, 'restore'])->name('admin.users.restore')->can('edit users');
         Route::delete('users/{user}/delete', [UserController::class, 'delete'])->name('admin.users.delete')->can('delete users');
+*/
 
         Route::get('permissions/{user?}', [PermissionsController::class, 'index'])->name('admin.permissions')->can('manage permissions');
         Route::post('permissions/create', [PermissionsController::class, 'store'])->name('admin.permissions.store')->can('manage permissions');
@@ -96,9 +170,12 @@ Route::group(
         Route::delete('/menu/{menu}/{item}/delete', [MenuController::class, 'destroyItem'])->name('admin.menus.item.destroy')->can('delete menus');
 
         // Settings
+/*
         Route::get('/settings', [SettingsController::class, 'index'])->name('admin.settings')->can('manage settings');
         Route::post('/settings', [SettingsController::class, 'update'])->name('admin.settings.update')->can('manage settings');
+*/
 
+/*
         //tools
         Route::get('/tools', [ToolsController::class, 'index'])->name('admin.tools')->can('manage tools');
         Route::get('/tools/home-page', [ToolsController::class, 'homePage'])->name('admin.tools.home-page')->can('manage tools');
@@ -106,6 +183,7 @@ Route::group(
         Route::post('tools/{tool}/edit', [ToolsController::class, 'update'])->name('admin.tools.update')->can('edit tools');
         Route::get('tools/status/change/{id}/{status}', [ToolsController::class, 'statusChange'])->name('admin.tools.status.change')->can('manage tools');
         Route::post('tools/bulk-action', [ToolsController::class, 'bulkAction'])->name('admin.tools.bulk')->can('edit tools');
+*/
 
         //profile
         Route::get('user/profile', [ProfileController::class, 'index'])->name('admin.profile')->can('manage profile');
@@ -127,6 +205,7 @@ Route::group(
         Route::get('plans/transactions/bank-transfer', [PlansController::class, 'bankTransfer'])->name('admin.transactions.bankTransfer')->can('manage transactions');
         Route::get('banktransfer/status/change/{id}/{status}', [PlansController::class, 'banktransferStatusChange'])->name('admin.banktransfer.status.change')->can('manage plans');
 
+/*
         //adds
         Route::get('/advertisements', [AdvertisementsController::class, 'index'])->name('admin.advertisements')->can('manage advertisements');
         Route::get('/advertisements/create/{type}', [AdvertisementsController::class, 'create'])->name('admin.advertisements.create')->can('create advertisements');
@@ -135,6 +214,7 @@ Route::group(
         Route::post('advertisements/{advertisement}/update', [AdvertisementsController::class, 'update'])->name('admin.advertisements.update')->can('edit advertisements');
         Route::get('advertisements/status/change/{id}/{status}', [AdvertisementsController::class, 'statusChange'])->name('admin.advertisements.status.change')->can('manage advertisements');
         Route::delete('advertisements/{advertisement}', [AdvertisementsController::class, 'destroy'])->name('admin.advertisements.destroy')->can('delete advertisements');
+*/
 
         // faqs admin
         Route::get('faq', [FaqController::class, 'index'])->name('admin.faqs.index')->can('manage faqs');
@@ -148,7 +228,7 @@ Route::group(
         //Widgets Routes
         Route::resource('/widgets', WidgetsController::class, ['as' => 'admin', 'only' => ['index', 'store', 'update', 'destroy']]);
         Route::post('/widgets/sort', [WidgetsController::class, 'sort'])->name('admin.widgets.sort')->can('manage widgets');
-        Route::get('plans/transactions', [PlansController::class, 'transactions'])->name('admin.transactions.list')->can('manage transactions');
+        Route::get('plans/transactions', [PlansController::class, 'transactions'])->name('admin.subscriptions')->can('manage transactions');
 
         // Update routes
         Route::get('/check-updates', [UpdateController::class, 'checkUpdates'])->name('update.checkUpdates')->can('manage updates');
@@ -171,5 +251,13 @@ Route::group(
         Route::get('/themes', [ThemesController::class, 'index'])->name('admin.themes.manage')->can('application operations');
         Route::post('/themes/install', [ThemesController::class, 'install'])->name('admin.theme.install')->can('application operations');
         Route::get('/themes/activate/{theme}', [ThemesController::class, 'activate'])->name('admin.themes.activate')->can('application operations');
+
+        // Feedback
+/*
+        Route::get('/feedback', [AdminFeedbackController::class, 'index'])->name('admin.feedback.index');
+        Route::get('/feedback/{feedback}', [AdminFeedbackController::class, 'show'])->name('admin.feedback.show');
+        Route::post('/feedback/{feedback}/status', [AdminFeedbackController::class, 'updateStatus'])->name('admin.feedback.status');
+        Route::delete('/feedback/{feedback}', [AdminFeedbackController::class, 'destroy'])->name('admin.feedback.destroy');
+*/
     }
 );

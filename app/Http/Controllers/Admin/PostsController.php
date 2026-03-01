@@ -24,7 +24,7 @@ class PostsController extends Controller
             ->with(['translations', 'author', 'tags.translations', 'categories.translations', 'media'])
             ->paginate();
 
-        return view('posts.index', compact('posts'));
+        return view('updates.index', compact('posts'));
     }
 
     public function create()
@@ -39,7 +39,7 @@ class PostsController extends Controller
             ];
         });
 
-        return view('posts.create', compact('locales', 'users', 'categories', 'tags'));
+        return view('updates.create', compact('locales', 'users', 'categories', 'tags'));
     }
 
     public function store(PostRequest $request)
@@ -63,7 +63,7 @@ class PostsController extends Controller
         $post->tags()->sync($tags);
         $post->categories()->sync($request->categories);
 
-        return redirect()->route('admin.posts')->withSuccess(__('admin.postCreated'));
+        return redirect()->route('admin.updates')->withSuccess(__('admin.postCreated'));
     }
 
     protected function prepareTags(Request $request)
@@ -112,7 +112,7 @@ class PostsController extends Controller
             ];
         });
 
-        return view('posts.edit', compact('locales', 'post', 'users', 'categories', 'tags'));
+        return view('updates.edit', compact('locales', 'post', 'users', 'categories', 'tags'));
     }
 
     /**
@@ -140,14 +140,14 @@ class PostsController extends Controller
         $post->tags()->sync($tags);
         $post->categories()->sync($request->categories);
 
-        return redirect()->route('admin.posts')->withSuccess(__('admin.postUpdated'));
+        return redirect()->route('admin.updates')->withSuccess(__('admin.postUpdated'));
     }
 
     public function destroy(Post $post)
     {
         $post->forceDelete();
 
-        return redirect()->route('admin.posts')->withSuccess(__('admin.postDeleted'));
+        return redirect()->route('admin.updates')->withSuccess(__('admin.postDeleted'));
     }
 
     public function featured($post, $id)
@@ -160,6 +160,6 @@ class PostsController extends Controller
             $post->featured = 0;
         }
         $post->save();
-        return redirect()->route('admin.posts')->withSuccess(__('admin.postUpdated'));
+        return redirect()->route('admin.updates')->withSuccess(__('admin.postUpdated'));
     }
 }

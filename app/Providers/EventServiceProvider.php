@@ -38,7 +38,18 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        \App\Models\User::observe(\App\Observers\UserObserver::class);
+
+        \Illuminate\Support\Facades\Event::listen(
+            \Illuminate\Auth\Events\Login::class,
+            function ($event) {
+                if ($event->user instanceof \App\Models\User) {
+                    $event->user->update([
+                        'last_login_at' => now(),
+                    ]);
+                }
+            }
+        );
     }
 
     /**

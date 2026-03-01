@@ -16,6 +16,7 @@ use App\Components\Gateways\Mollie;
 use App\Components\Gateways\Paddle;
 use App\Components\Gateways\RazorPay;
 use App\Components\Gateways\Skrill;
+use App\Components\Gateways\Polar;
 use App\Helpers\Classes\MenuManager;
 use App\Helpers\Classes\SEOAnalyzer;
 use Illuminate\Support\Facades\Vite;
@@ -138,6 +139,7 @@ class ArtisanServiceProvider extends ServiceProvider
         Gateway::register('skrill', Skrill::class);
         Gateway::register('banktransfer', BankTransfer::class);
         Gateway::register('paddle', Paddle::class);
+        Gateway::register('polar', Polar::class);
     }
 
     /**

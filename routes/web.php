@@ -13,6 +13,7 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SocialController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\InstallController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PaymentsController;
@@ -102,6 +103,9 @@ Route::group(
         //contactus
         Route::get('/contact', [ContactController::class, 'show'])->name('contact');
         Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
+
+        // Feedback widget
+        Route::post('/feedback/submit', [FeedbackController::class, 'store'])->name('feedback.submit');
 
         Route::get('/', [HomeController::class, 'home'])->name('front.index');
         Route::post('/', [HomeController::class, 'homeTool'])->name('front.index.action');
