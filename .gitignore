@@ -17,3 +17,22 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+
+# Non-essential themes
+/resources/themes/minimal
+/resources/themes/default
+/public/themes/minimal
+/public/themes/default
+
+# Artifacts and logs
+/routes_cleanup.txt
+/routes_final_check.txt
+/tools_dump.json
+/public/error_log
+/public/hot.bak
+/public/public_html/
+/icon_audit.php
+/dump_tools.php
+/update_ai_humanizer_props.php
+/googlee6c12717ff5043cb.html
+
