@@ -45,17 +45,32 @@
 }
 
 .humanizer-page-header .header-left .tool-title {
-    font-size: 22px;
+    font-size: 24px;
     font-weight: 700;
     color: var(--text-primary);
     margin: 0;
-    line-height: 1.3;
+    line-height: 1.2;
+}
+
+.title-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.tool-description-mini {
+    color: var(--text-muted);
+    font-size: 13px;
+    font-weight: 500;
+    margin-top: 0;
+    border: none !important;
+    background: none !important;
+    padding: 0 !important;
 }
 
 .humanizer-page-header .header-left .header-divider {
-    width: 1px;
-    height: 24px;
-    background: var(--border-color);
+    display: none;
+    /* Removed the vertical border line */
 }
 
 .humanizer-page-header .header-right {
