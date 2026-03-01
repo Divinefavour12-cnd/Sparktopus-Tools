@@ -1,0 +1,9 @@
+{
+    "name": "admin",
+    "extends": "default",
+    "asset-path": "themes/admin",
+    "category": "admin",
+    "require": "1.0.0",
+    "description": "SparktopusTools default admin theme for Sparktopus Tools.",
+    "version": "1.0.0"
+}

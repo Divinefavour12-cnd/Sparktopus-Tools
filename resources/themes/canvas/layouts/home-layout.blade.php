@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="@lang('front.direction')"
+    theme-mode="{{ (theme_option('dark_default_theme') == 'dark' && theme_option('enable_dark_mode') == 1 && request()->cookie('siteMode') != 'light') || request()->cookie('siteMode') === 'dark' ? 'dark' : 'light' }}">
+
+<head>
+    <meta name="app-search" content="{{ route('search') }}">
+    @vite(['resources/themes/canvas/assets/sass/app.scss', 'resources/themes/canvas/assets/js/app.js'])
+    @meta_tags()
+    @meta_tags('header')
+    @stack('page_header')
+    @if (setting('enable_header_code', 0))
+        {!! setting('header_code') !!}
+    @endif
+</head>
+
+<body class="bg-white">
+    <x-application-theme-switch />
+    <main class="main-wrapper">
+        <x-application-navbar />
+        <x-application-breadcrumbs />
+        {{ $slot }}
+    </main>
+    <x-application-footer />
+    <x-application-signout />
+    <x-application-messages />
+
+    {{-- Mobile Bottom Nav --}}
+    @include('components.mobile-bottom-nav')
+
+    @include('components.page-loader')
+    <x-application-cookies-consent />
+    <x-application-back-to-top />
+    @meta_tags('footer')
+    {{-- Popup ad for home page only --}}
+    @if(request()->routeIs('front.index'))
+        @guest
+            @include('partials.popup-ad')
+        @endguest
+        @auth
+            @if(auth()->user()->is_ads_allowed)
+                @include('partials.popup-ad')
+            @endif
+        @endauth
+    @endif
+    {{-- Upgrade popup for tool usage limits --}}
+    @auth
+        @include('partials.upgrade-popup')
+    @endauth
+    @stack('page_scripts')
+    @if (setting('enable_footer_code', 0))
+        {!! setting('footer_code') !!}
+    @endif
+</body>
+
+</html>

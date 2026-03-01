@@ -1,0 +1,172 @@
+// Popup Ad Styles
+.popup-ad-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.popup-ad-modal {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    width: fit-content;
+    min-width: 300px;
+    max-width: 85vw;
+    max-height: 80vh;
+    overflow: hidden;
+    position: relative;
+    padding: 1rem;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: popupFadeUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes popupFadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+[theme-mode="dark"] .popup-ad-modal {
+    background: rgba(30, 30, 35, 0.8);
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.popup-ad-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 32px;
+    height: 32px;
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 50%;
+    color: #444;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    z-index: 100;
+}
+
+[theme-mode="dark"] .popup-ad-close {
+    background: rgba(255, 255, 255, 0.1);
+    color: #eee;
+}
+
+.popup-ad-close:hover {
+    background: #ff4757;
+    color: white;
+    border-color: #ff4757;
+    transform: rotate(90deg);
+}
+
+.popup-ad-timer {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 35px;
+    height: 35px;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    backdrop-filter: blur(4px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    z-index: 10;
+}
+
+[theme-mode="dark"] .popup-ad-timer {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.popup-ad-content {
+    width: 100%;
+    overflow-y: auto;
+    padding-top: 15px;
+    text-align: center;
+
+    img,
+    video {
+        width: auto;
+        max-width: 100%;
+        max-height: 60vh;
+        height: auto;
+        object-fit: contain;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        display: block;
+        margin: 0 auto;
+    }
+}
+
+.ad-remove-wrapper {
+    margin-top: 15px;
+    padding: 10px 0;
+    width: 100%;
+    text-align: center;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+[theme-mode="dark"] .ad-remove-wrapper {
+    border-top-color: rgba(255, 255, 255, 0.05);
+}
+
+.ad-remove-link {
+    font-size: 13px;
+    color: #7c3aed !important;
+    text-decoration: none !important;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 16px;
+    background: rgba(124, 58, 237, 0.08);
+    border-radius: 20px;
+    transition: all 0.2s ease;
+
+    &:hover {
+        background: #7c3aed;
+        color: white !important;
+        transform: translateY(-1px);
+    }
+}
+
+[theme-mode="dark"] .ad-remove-link {
+    color: #a78bfa !important;
+    background: rgba(167, 139, 250, 0.1);
+
+    &:hover {
+        background: #a78bfa;
+        color: #1e1b4b !important;
+    }
+}
+
+.popup-upgrade-msg {
+    display: none; // Reserved for fallback
+}

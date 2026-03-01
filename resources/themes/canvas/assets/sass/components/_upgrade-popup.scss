@@ -1,0 +1,217 @@
+// Upgrade Popup Styles
+.upgrade-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.upgrade-popup-modal {
+    background: var(--bs-body-bg, #fff);
+    border-radius: 16px;
+    max-width: 480px;
+    width: 90%;
+    position: relative;
+    padding: 2.5rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+[theme-mode="dark"] .upgrade-popup-modal {
+    background: var(--bs-dark, #212529);
+}
+
+.upgrade-popup-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 28px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #999;
+    line-height: 1;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+.upgrade-popup-close:hover {
+    color: #333;
+    background: rgba(0, 0, 0, 0.05);
+}
+
+[theme-mode="dark"] .upgrade-popup-close {
+    color: #aaa;
+}
+
+[theme-mode="dark"] .upgrade-popup-close:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.upgrade-popup-content {
+    text-align: center;
+}
+
+.upgrade-popup-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 50%;
+    margin-bottom: 1.5rem;
+    color: white;
+}
+
+.upgrade-popup-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--bs-body-color, #212529);
+}
+
+[theme-mode="dark"] .upgrade-popup-title {
+    color: var(--bs-light, #f8f9fa);
+}
+
+.upgrade-popup-description {
+    font-size: 1rem;
+    color: var(--bs-secondary-color, #6c757d);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.upgrade-popup-description strong {
+    color: var(--bs-body-color, #212529);
+}
+
+[theme-mode="dark"] .upgrade-popup-description strong {
+    color: var(--bs-light, #f8f9fa);
+}
+
+.upgrade-popup-plans {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.upgrade-plan-option {
+    background: var(--bs-light, #f8f9fa);
+    border: 2px solid var(--bs-border-color, #dee2e6);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    text-align: left;
+    transition: all 0.2s ease;
+}
+
+[theme-mode="dark"] .upgrade-plan-option {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.upgrade-plan-option:hover {
+    border-color: #667eea;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+}
+
+.upgrade-plan-name {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--bs-body-color, #212529);
+    margin-bottom: 0.25rem;
+}
+
+[theme-mode="dark"] .upgrade-plan-name {
+    color: var(--bs-light, #f8f9fa);
+}
+
+.upgrade-plan-limit {
+    font-size: 0.9rem;
+    color: var(--bs-secondary-color, #6c757d);
+}
+
+.upgrade-popup-button {
+    display: inline-block;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 0.875rem 2.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.upgrade-popup-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+    color: white;
+    text-decoration: none;
+}
+
+.upgrade-popup-footer {
+    margin-top: 1rem;
+    font-size: 0.875rem;
+    color: var(--bs-secondary-color, #6c757d);
+}
+
+// Responsive
+@media (max-width: 576px) {
+    .upgrade-popup-modal {
+        padding: 2rem 1.5rem;
+    }
+
+    .upgrade-popup-title {
+        font-size: 1.5rem;
+    }
+
+    .upgrade-popup-icon {
+        width: 64px;
+        height: 64px;
+    }
+
+    .upgrade-popup-icon svg {
+        width: 32px;
+        height: 32px;
+    }
+}
