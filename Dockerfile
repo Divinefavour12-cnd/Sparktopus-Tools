@@ -42,11 +42,20 @@ WORKDIR /var/www/html
 COPY . .
 
 # Set permissions
-RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
-RUN chmod +x /var/www/html/scripts/render-start.sh
+# Ensure directory structure exists
+RUN mkdir -p storage/framework/cache/data \
+    storage/framework/sessions \
+    storage/framework/testing \
+    storage/framework/views \
+    storage/logs \
+    bootstrap/cache
 
-# Install dependencies
-RUN composer install --no-dev --optimize-autoloader
+# Set preliminary permissions for build-time commands
+RUN chown -R www-data:www-data storage bootstrap/cache
+
+# Install dependencies (skip scripts to avoid cache errors during build)
+RUN chmod +x scripts/render-start.sh
+RUN composer install --no-dev --optimize-autoloader --no-scripts
 RUN npm install && npm run build
 
 # Render expects the server to listen on $PORT
