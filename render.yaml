@@ -13,9 +13,7 @@ services:
       - key: APP_KEY
         generateValue: true
       - key: DB_CONNECTION
-        fromDatabase:
-          name: sparktopus-db
-          property: type
+        value: pgsql
       - key: DB_HOST
         fromDatabase:
           name: sparktopus-db
