@@ -56,7 +56,14 @@ RUN chown -R www-data:www-data storage bootstrap/cache
 # Install dependencies (skip scripts to avoid cache errors during build)
 RUN chmod +x scripts/render-start.sh
 RUN composer install --no-dev --optimize-autoloader --no-scripts
-RUN npm install && npm run build
+# Skip Puppeteer Chromium download during build (installed via apt-get)
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+
+# Install npm dependencies
+RUN npm install
+
+# Build assets with memory limit to avoid crashing on free tier
+RUN NODE_OPTIONS=--max-old-space-size=450 npm run build
 
 # Render expects the server to listen on $PORT
 # The startup script will configure Apache to listen on $PORT
