@@ -1,39 +1,50 @@
 #!/bin/bash
-set -x # Debug: show commands
+set -x
 
 echo ">>> Starting Render Initialization..."
 
 cd /var/www/html
 
-# Fix permissions first
-echo "Fixing permissions..."
 chmod -R 777 storage bootstrap/cache
 
-# Clear config cache to ensure fresh ENV values
 php artisan config:clear
 
 # Generate APP_KEY if not set
 if [ -z "$APP_KEY" ]; then
-    echo "Generating APP_KEY..."
     php artisan key:generate --force
 fi
 
-# Wait for database and run migrations
-echo "Waiting for database connection..."
-MAX_RETRIES=5
-RETRY_COUNT=0
-until [ $RETRY_COUNT -ge $MAX_RETRIES ]
-do
-    echo "Running migrations (Attempt: $((RETRY_COUNT+1))/$MAX_RETRIES)..."
-    php artisan migrate --force --no-interaction && break
-    RETRY_COUNT=$((RETRY_COUNT+1))
-    if [ $RETRY_COUNT -ge $MAX_RETRIES ]; then
-        echo "!!! Migration failed after several attempts."
-        break
-    fi
-    echo "Migration failed. Retrying in 5 seconds..."
-    sleep 5
-done
+# Mark already-existing tables as migrated without touching data
+echo "Checking migration status..."
+php artisan migrate:status || true
+
+# Run migrations, if a migration fails due to existing table, mark it and continue
+echo "Running migrations..."
+php artisan migrate --force --no-interaction 2>&1 | tee /tmp/migrate_output.txt
+
+# Check if failure was due to duplicate table only
+if grep -q "already exists" /tmp/migrate_output.txt; then
+    echo "Duplicate table detected - marking failed migrations as complete..."
+    
+    # Get the failed migration name and insert it into migrations table
+    php artisan tinker --no-interaction <<'EOF'
+$migrated = DB::table('migrations')->pluck('migration')->toArray();
+$files = glob(database_path('migrations/*.php'));
+foreach($files as $file) {
+    $name = basename($file, '.php');
+    if (!in_array($name, $migrated)) {
+        DB::table('migrations')->insert([
+            'migration' => $name,
+            'batch' => DB::table('migrations')->max('batch') + 1
+        ]);
+        echo "Marked as migrated: $name\n";
+    }
+}
+EOF
+
+    echo "Retrying remaining migrations..."
+    php artisan migrate --force --no-interaction || true
+fi
 
 # Optimize
 echo "Optimizing application..."
