@@ -1,0 +1,83 @@
+{
+  "_index-22900c0f.js": {
+    "file": "assets/index-22900c0f.js"
+  },
+  "resources/themes/admin/assets/js/app.js": {
+    "file": "assets/app-bea757fc.js",
+    "imports": [
+      "_index-22900c0f.js"
+    ],
+    "isEntry": true,
+    "src": "resources/themes/admin/assets/js/app.js"
+  },
+  "resources/themes/admin/assets/sass/app.scss": {
+    "file": "assets/app-d82ffd40.css",
+    "isEntry": true,
+    "src": "resources/themes/admin/assets/sass/app.scss"
+  },
+  "resources/themes/admin/assets/sass/vendors/fonts/LineIcons.eot": {
+    "file": "assets/LineIcons-a26b73bc.eot",
+    "src": "resources/themes/admin/assets/sass/vendors/fonts/LineIcons.eot"
+  },
+  "resources/themes/admin/assets/sass/vendors/fonts/LineIcons.svg": {
+    "file": "assets/LineIcons-328e4f04.svg",
+    "src": "resources/themes/admin/assets/sass/vendors/fonts/LineIcons.svg"
+  },
+  "resources/themes/admin/assets/sass/vendors/fonts/LineIcons.ttf": {
+    "file": "assets/LineIcons-27d240ef.ttf",
+    "src": "resources/themes/admin/assets/sass/vendors/fonts/LineIcons.ttf"
+  },
+  "resources/themes/admin/assets/sass/vendors/fonts/LineIcons.woff": {
+    "file": "assets/LineIcons-6d1db654.woff",
+    "src": "resources/themes/admin/assets/sass/vendors/fonts/LineIcons.woff"
+  },
+  "resources/themes/admin/assets/sass/vendors/fonts/LineIcons.woff2": {
+    "file": "assets/LineIcons-22d65627.woff2",
+    "src": "resources/themes/admin/assets/sass/vendors/fonts/LineIcons.woff2"
+  },
+  "resources/themes/canvas/assets/images/auth-bg.jpg": {
+    "file": "assets/auth-bg-ca874762.jpg",
+    "src": "resources/themes/canvas/assets/images/auth-bg.jpg"
+  },
+  "resources/themes/canvas/assets/images/contant-rewriting-bg.svg": {
+    "file": "assets/contant-rewriting-bg-f88bb057.svg",
+    "src": "resources/themes/canvas/assets/images/contant-rewriting-bg.svg"
+  },
+  "resources/themes/canvas/assets/images/cover.jpg": {
+    "file": "assets/cover-714a8c7e.jpg",
+    "src": "resources/themes/canvas/assets/images/cover.jpg"
+  },
+  "resources/themes/canvas/assets/images/image-converter-bg.svg": {
+    "file": "assets/image-converter-bg-9026f182.svg",
+    "src": "resources/themes/canvas/assets/images/image-converter-bg.svg"
+  },
+  "resources/themes/canvas/assets/images/seo-background.svg": {
+    "file": "assets/seo-background-9dd0baac.svg",
+    "src": "resources/themes/canvas/assets/images/seo-background.svg"
+  },
+  "resources/themes/canvas/assets/images/wordpress-background.svg": {
+    "file": "assets/wordpress-background-0781c549.svg",
+    "src": "resources/themes/canvas/assets/images/wordpress-background.svg"
+  },
+  "resources/themes/canvas/assets/js/app.js": {
+    "file": "assets/app-ec557663.js",
+    "imports": [
+      "_index-22900c0f.js"
+    ],
+    "isEntry": true,
+    "src": "resources/themes/canvas/assets/js/app.js"
+  },
+  "resources/themes/canvas/assets/sass/app.scss": {
+    "file": "assets/app-57813cbd.css",
+    "isEntry": true,
+    "src": "resources/themes/canvas/assets/sass/app.scss"
+  },
+  "resources/themes/default/assets/images/mac.svg": {
+    "file": "assets/mac-1f66481d.svg",
+    "src": "resources/themes/default/assets/images/mac.svg"
+  },
+  "resources/themes/default/assets/images/mobile-friendly.svg": {
+    "file": "assets/mobile-friendly-44119127.svg",
+    "src": "resources/themes/default/assets/images/mobile-friendly.svg"
+  }
+}

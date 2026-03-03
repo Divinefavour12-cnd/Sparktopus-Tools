@@ -31,14 +31,10 @@ RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf
 # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Install Node.js
-RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
-    apt-get install -y nodejs
-
 # Set working directory
 WORKDIR /var/www/html
 
-# Copy project files
+# Copy project files (including local pre-built public/build)
 COPY . .
 
 # Set permissions
@@ -51,19 +47,11 @@ RUN mkdir -p storage/framework/cache/data \
     bootstrap/cache
 
 # Set preliminary permissions for build-time commands
-RUN chown -R www-data:www-data storage bootstrap/cache
+RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+RUN chmod +x /var/www/html/scripts/render-start.sh
 
-# Install dependencies (skip scripts to avoid cache errors during build)
-RUN chmod +x scripts/render-start.sh
+# Install dependencies (only Composer)
 RUN composer install --no-dev --optimize-autoloader --no-scripts
-# Skip Puppeteer Chromium download during build (installed via apt-get)
-ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
-
-# Install npm dependencies
-RUN npm install
-
-# Build assets with memory limit to avoid crashing on free tier
-RUN NODE_OPTIONS=--max-old-space-size=450 npm run build
 
 # Render expects the server to listen on $PORT
 # The startup script will configure Apache to listen on $PORT
