@@ -29,7 +29,7 @@ services:
       - key: FRONT_THEME
         value: canvas
       - key: SESSION_DRIVER
-        value: file
+        value: database
       - key: SESSION_LIFETIME
         value: "120"
       - key: SESSION_SECURE_COOKIE
