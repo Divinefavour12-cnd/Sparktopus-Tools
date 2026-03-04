@@ -14,42 +14,23 @@ if [ -z "$APP_KEY" ]; then
     php artisan key:generate --force
 fi
 
-# Mark already-existing tables as migrated without touching data
-echo "Checking migration status..."
-php artisan migrate:status || true
+# Drop all tables and migrate fresh to fix duplicate table issues
+echo "Running fresh migrations..."
+php artisan migrate:fresh --force --no-interaction --seed
 
-# Run migrations, if a migration fails due to existing table, mark it and continue
-echo "Running migrations..."
-php artisan migrate --force --no-interaction 2>&1 | tee /tmp/migrate_output.txt
-
-# Check if failure was due to duplicate table only
-if grep -q "already exists" /tmp/migrate_output.txt; then
-    echo "Duplicate table detected - marking failed migrations as complete..."
-    
-    # Get the failed migration name and insert it into migrations table
-    php artisan tinker --no-interaction <<'EOF'
-$migrated = DB::table('migrations')->pluck('migration')->toArray();
-$files = glob(database_path('migrations/*.php'));
-foreach($files as $file) {
-    $name = basename($file, '.php');
-    if (!in_array($name, $migrated)) {
-        DB::table('migrations')->insert([
-            'migration' => $name,
-            'batch' => DB::table('migrations')->max('batch') + 1
-        ]);
-        echo "Marked as migrated: $name\n";
-    }
-}
-EOF
-
-    echo "Retrying remaining migrations..."
+if [ $? -ne 0 ]; then
+    echo "!!! Fresh migration failed, trying regular migrate..."
     php artisan migrate --force --no-interaction || true
 fi
+
+# Create storage symlink
+php artisan storage:link || true
 
 # Optimize
 echo "Optimizing application..."
 php artisan route:clear
 php artisan view:clear
+php artisan cache:clear
 
 # Configure Apache port
 echo "Configuring Apache for port $PORT..."
