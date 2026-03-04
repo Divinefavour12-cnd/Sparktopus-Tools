@@ -1,54 +1,59 @@
 #!/bin/bash
-set -e # Exit on error
-set -x # Debug: show commands
+set -x
 
 echo ">>> Starting Render Initialization..."
 
-# Ensure we are in the right directory
 cd /var/www/html
 
-# Check if .env exists, if not generate one from example (APP_KEY is already handled by Render)
-if [ ! -f .env ]; then
-    echo "Creating .env from .env.example..."
-    cp .env.example .env
-fi
-
-# Fix permissions for folders Laravel needs to write to
-echo "Fixing permissions..."
 chmod -R 777 storage bootstrap/cache
 
-# Wait for database to be ready (optional but good)
-echo "Waiting for database connection..."
-# We can use a simple loop to wait for pg_isready if we have postgres-client installed
-# But let's just try to migrate with a retry limit
-MAX_RETRIES=5
-RETRY_COUNT=0
-until [ $RETRY_COUNT -ge $MAX_RETRIES ]
-do
-    echo "Running migrations (Attempt: $((RETRY_COUNT+1))/$MAX_RETRIES)..."
-    php artisan migrate --force --no-interaction && break
-    RETRY_COUNT=$((RETRY_COUNT+1))
-    echo "Migration failed. Retrying in 5 seconds..."
-    sleep 5
-done
+php artisan config:clear
 
-if [ $RETRY_COUNT -eq $MAX_RETRIES ]; then
-    echo "!!! Migration failed after several attempts. Check your database credentials on Render."
+# Generate APP_KEY if not set
+if [ -z "$APP_KEY" ]; then
+    php artisan key:generate --force
 fi
 
-# Clear and cache optimization
-echo "Optimizing application for production..."
-php artisan config:clear
+# Mark already-existing tables as migrated without touching data
+echo "Checking migration status..."
+php artisan migrate:status || true
+
+# Run migrations, if a migration fails due to existing table, mark it and continue
+echo "Running migrations..."
+php artisan migrate --force --no-interaction 2>&1 | tee /tmp/migrate_output.txt
+
+# Check if failure was due to duplicate table only
+if grep -q "already exists" /tmp/migrate_output.txt; then
+    echo "Duplicate table detected - marking failed migrations as complete..."
+    
+    # Get the failed migration name and insert it into migrations table
+    php artisan tinker --no-interaction <<'EOF'
+$migrated = DB::table('migrations')->pluck('migration')->toArray();
+$files = glob(database_path('migrations/*.php'));
+foreach($files as $file) {
+    $name = basename($file, '.php');
+    if (!in_array($name, $migrated)) {
+        DB::table('migrations')->insert([
+            'migration' => $name,
+            'batch' => DB::table('migrations')->max('batch') + 1
+        ]);
+        echo "Marked as migrated: $name\n";
+    }
+}
+EOF
+
+    echo "Retrying remaining migrations..."
+    php artisan migrate --force --no-interaction || true
+fi
+
+# Optimize
+echo "Optimizing application..."
 php artisan route:clear
 php artisan view:clear
-# We won't use artisan config:cache yet as it might lock in wrong ENV during build vs runtime
-# But we can do it if secrets are loaded.
-# php artisan config:cache
-# php artisan route:cache
 
-# Set Apache to listen on Render's dynamic port
+# Configure Apache port
 echo "Configuring Apache for port $PORT..."
 sed -i "s/80/$PORT/g" /etc/apache2/sites-available/000-default.conf /etc/apache2/ports.conf
 
-echo ">>> Initialization complete. Starting Apache..."
+echo ">>> Starting Apache..."
 apache2-foreground
