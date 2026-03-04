@@ -19,19 +19,19 @@ class Database
     {
         $this->setupDatabaseConnectionConfig($data);
 
-        DB::connection('mysql')->reconnect();
-        DB::connection('mysql')->getPdo();
+        DB::connection('pgsql')->reconnect();
+        DB::connection('pgsql')->getPdo();
     }
 
     private function setupDatabaseConnectionConfig($data)
     {
         config([
-            'database.default' => 'mysql',
-            'database.connections.mysql.host' => $data['host'],
-            'database.connections.mysql.port' => $data['port'],
-            'database.connections.mysql.database' => $data['database'],
-            'database.connections.mysql.username' => $data['username'],
-            'database.connections.mysql.password' => $data['password'],
+            'database.default' => 'pgsql',
+            'database.connections.pgsql.host' => $data['host'],
+            'database.connections.pgsql.port' => $data['port'],
+            'database.connections.pgsql.database' => $data['database'],
+            'database.connections.pgsql.username' => $data['username'],
+            'database.connections.pgsql.password' => $data['password'],
         ]);
     }
 
@@ -40,6 +40,7 @@ class Database
         $env = DotenvEditor::load();
 
         //database credentials
+        $env->setKey('DB_CONNECTION', 'pgsql');
         $env->setKey('DB_HOST', $data['host']);
         $env->setKey('DB_PORT', $data['port']);
         $env->setKey('DB_DATABASE', $data['database']);
@@ -51,6 +52,6 @@ class Database
 
     private function migrateAndSeedDatabase()
     {
-        Artisan::call('migrate', ['--seed' => true]);
+        Artisan::call('migrate', ['--seed' => true, '--force' => true]);
     }
 }
