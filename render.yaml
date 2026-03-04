@@ -14,16 +14,28 @@ services:
         value: "true" # Temporarily enable for debugging
       - key: APP_KEY
         generateValue: true
+      - key: APP_INSTALLED
+        value: "true"
+      - key: APP_VERSION
+        value: "3.1.0"
+      - key: APP_ADMIN_PREFIX
+        value: admin
+      - key: SUPER_ADMIN_ROLE
+        value: "1"
+      - key: FRONT_THEME
+        value: canvas
       - key: DB_CONNECTION
         value: pgsql
       - key: DB_CHARSET
         value: utf8
-      - key: DB_COLLATION
-        value: utf8_unicode_ci
       - key: DATABASE_URL
         fromDatabase:
           name: sparktopus-db
           property: connectionString
+      - key: DB_HOST
+        fromDatabase:
+          name: sparktopus-db
+          property: host
       - key: DB_PORT
         fromDatabase:
           name: sparktopus-db
@@ -40,10 +52,6 @@ services:
         fromDatabase:
           name: sparktopus-db
           property: password
-      - key: DB_HOST
-        fromDatabase:
-          name: sparktopus-db
-          property: host
 
 databases:
   - name: sparktopus-db
