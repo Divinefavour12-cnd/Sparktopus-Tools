@@ -8,6 +8,10 @@ services:
     envVars:
       - key: APP_ENV
         value: production
+      - key: APP_URL
+        value: https://sparktopus-web.onrender.com
+      - key: ASSET_URL
+        value: https://sparktopus-web.onrender.com
       - key: LOG_CHANNEL
         value: stderr
       - key: APP_DEBUG
