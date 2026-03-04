@@ -7,6 +7,7 @@ cd /var/www/html
 
 chmod -R 777 storage bootstrap/cache
 
+# Clear config to ensure fresh ENV values
 php artisan config:clear
 
 # Generate APP_KEY if not set
@@ -14,20 +15,19 @@ if [ -z "$APP_KEY" ]; then
     php artisan key:generate --force
 fi
 
-# Drop all tables and migrate fresh to fix duplicate table issues
-echo "Running fresh migrations..."
-php artisan migrate:fresh --force --no-interaction --seed
+# Wipe all tables and migrate fresh
+echo "Wiping database..."
+php artisan db:wipe --force
 
-if [ $? -ne 0 ]; then
-    echo "!!! Fresh migration failed, trying regular migrate..."
-    php artisan migrate --force --no-interaction || true
-fi
+echo "Running migrations..."
+php artisan migrate --force --no-interaction --seed
 
 # Create storage symlink
+echo "Creating storage link..."
 php artisan storage:link || true
 
-# Optimize
-echo "Optimizing application..."
+# Clear all caches
+echo "Clearing caches..."
 php artisan route:clear
 php artisan view:clear
 php artisan cache:clear
