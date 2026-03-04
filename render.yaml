@@ -24,6 +24,14 @@ services:
         value: "1"
       - key: FRONT_THEME
         value: canvas
+      - key: SESSION_DRIVER
+        value: cookie
+      - key: SESSION_SECURE_COOKIE
+        value: "true"
+      - key: SESSION_DOMAIN
+        value: sparktopus-web.onrender.com
+      - key: SANCTUM_STATEFUL_DOMAINS
+        value: sparktopus-web.onrender.com
       - key: DB_CONNECTION
         value: pgsql
       - key: DB_CHARSET
