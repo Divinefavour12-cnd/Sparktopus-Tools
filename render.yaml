@@ -16,6 +16,10 @@ services:
         generateValue: true
       - key: DB_CONNECTION
         value: pgsql
+      - key: DB_CHARSET
+        value: utf8
+      - key: DB_COLLATION
+        value: utf8_unicode_ci
       - key: DATABASE_URL
         fromDatabase:
           name: sparktopus-db
@@ -36,6 +40,10 @@ services:
         fromDatabase:
           name: sparktopus-db
           property: password
+      - key: DB_HOST
+        fromDatabase:
+          name: sparktopus-db
+          property: host
 
 databases:
   - name: sparktopus-db
