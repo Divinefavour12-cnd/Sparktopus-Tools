@@ -1,15 +1,13 @@
 <?php
-
 namespace App\Providers;
-
 use App\Models\WidgetArea;
 use Detection\MobileDetect;
 use App\Helpers\Facads\Widgets;
 use Jenssegers\Agent\Facades\Agent;
 use App\Helpers\Classes\WidgetManager;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
-
 class WidgetsServiceProvider extends ServiceProvider
 {
     /**
@@ -21,7 +19,6 @@ class WidgetsServiceProvider extends ServiceProvider
     {
         $this->registerServices();
     }
-
     /**
      * Bootstrap services.
      *
@@ -32,7 +29,6 @@ class WidgetsServiceProvider extends ServiceProvider
         $this->initWidget();
         $this->registerWidgets();
     }
-
     /**
      * Register the Admin Menu instance.
      *
@@ -44,7 +40,6 @@ class WidgetsServiceProvider extends ServiceProvider
             return new WidgetManager();
         });
     }
-
     /**
      * Register the Widget
      * @return void
@@ -63,7 +58,6 @@ class WidgetsServiceProvider extends ServiceProvider
         Widgets::register('artisan-posts-categories', 'App\Widgets\PostCategoriesWidet');
         Widgets::register('artisan-posts-tags', 'App\Widgets\TagsWidget');
     }
-
     /**
      * Register the Widget areas
      * @return void
@@ -74,38 +68,48 @@ class WidgetsServiceProvider extends ServiceProvider
             return;
         }
 
-        $sidebars = WidgetArea::with(
-            ['widgets' => function ($q) {
-                $detect = new MobileDetect();
-                $q->active();
-                if ($detect->isDesktop()) {
-                    $q->web();
-                }
+        // Guard against missing tables during first boot / migrations
+        try {
+            if (!Schema::hasTable('widget_areas')) {
+                return;
+            }
+        } catch (\Exception $e) {
+            return;
+        }
 
-                if ($detect->isMobile() || $detect->isTablet()) {
-                    $q->mobile();
-                }
-            }]
-        )->get();
-
-        foreach ($sidebars as $sidebar) {
-            $widgets = $sidebar->widgets;
-            foreach ($widgets as $widget) {
-                if (!Widgets::find($widget->name) || !method_exists($widget->name, 'run')) {
-                    continue;
-                }
-
-                $config = [
-                    'title' => $widget->title,
-                    'settings' => $widget->settings,
-                ];
-
-                if ($widget->ajax === 1) {
-                    \Widget::group($sidebar->name)->position($widget->order)->addAsyncWidget($widget->name, $config);
-                } else {
-                    \Widget::group($sidebar->name)->position($widget->order)->addWidget($widget->name, $config);
+        try {
+            $sidebars = WidgetArea::with(
+                ['widgets' => function ($q) {
+                    $detect = new MobileDetect();
+                    $q->active();
+                    if ($detect->isDesktop()) {
+                        $q->web();
+                    }
+                    if ($detect->isMobile() || $detect->isTablet()) {
+                        $q->mobile();
+                    }
+                }]
+            )->get();
+            foreach ($sidebars as $sidebar) {
+                $widgets = $sidebar->widgets;
+                foreach ($widgets as $widget) {
+                    if (!Widgets::find($widget->name) || !method_exists($widget->name, 'run')) {
+                        continue;
+                    }
+                    $config = [
+                        'title' => $widget->title,
+                        'settings' => $widget->settings,
+                    ];
+                    if ($widget->ajax === 1) {
+                        \Widget::group($sidebar->name)->position($widget->order)->addAsyncWidget($widget->name, $config);
+                    } else {
+                        \Widget::group($sidebar->name)->position($widget->order)->addWidget($widget->name, $config);
+                    }
                 }
             }
+        } catch (\Exception $e) {
+            // Silently fail if database tables are not yet created
+            return;
         }
     }
 }
