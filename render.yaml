@@ -15,7 +15,7 @@ services:
       - key: LOG_CHANNEL
         value: stderr
       - key: APP_DEBUG
-        value: "true" # Temporarily enable for debugging
+        value: "true"
       - key: APP_KEY
         generateValue: true
       - key: APP_INSTALLED
@@ -29,11 +29,15 @@ services:
       - key: FRONT_THEME
         value: canvas
       - key: SESSION_DRIVER
-        value: cookie
+        value: file
+      - key: SESSION_LIFETIME
+        value: "120"
       - key: SESSION_SECURE_COOKIE
         value: "true"
       - key: SESSION_DOMAIN
         value: sparktopus-web.onrender.com
+      - key: SESSION_SAME_SITE
+        value: lax
       - key: SANCTUM_STATEFUL_DOMAINS
         value: sparktopus-web.onrender.com
       - key: DB_CONNECTION
